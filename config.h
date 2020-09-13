@@ -144,6 +144,7 @@ static Key keys[] = {
     { MODKEY,						XK_n,      spawn,          SHCMD("$TERMINAL -e nvim $NOTES") },
     { MODKEY,						XK_p,      spawn,          SHCMD("$TERMINAL -e nvim $PROJECTS") },
 
+    { MODKEY,                       XK_s,      togglesticky,   {0} },
 	/*
 	{ MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } },
