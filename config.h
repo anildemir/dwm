@@ -87,10 +87,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,		            	XK_w,	   spawn,		   SHCMD("$BROWSER") },
-	{ MODKEY|ShiftMask,				XK_w,	   spawn,		   SHCMD("st -e iwctl") },
-	{ MODKEY,						XK_e,	   spawn,		   SHCMD("st -e neomutt") },
-	{ MODKEY,						XK_r,      spawn,          SHCMD("st -e lf") },
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY|ShiftMask,				XK_w,	   spawn,		   SHCMD("$TERMINAL -e iwctl") },
+    { MODKEY,						XK_e,	   spawn,		   SHCMD("$TERMINAL -e neomutt") },
+    { MODKEY,						XK_r,      spawn,          SHCMD("$TERMINAL -e lf") },
+	{ MODKEY,                       XK_grave,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,	                	XK_Escape, spawn,          SHCMD("togglekb") },
 
@@ -103,36 +103,21 @@ static Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 
-    { MODKEY,                       XK_a,      togglegaps,     {0} },
-    { MODKEY|ShiftMask,             XK_a,      defaultgaps,    {0} },
-    //{ MODKEY,						XK_s,      togglesticky,   {0} },
-
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_l,      incrogaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_h,      incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_l,      incrigaps,      {.i = -1 } },
-    { MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } },
-	{ MODKEY,                       XK_o,      incrihgaps,     {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_y,      incrivgaps,     {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_o,      incrivgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_y,      incrohgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } },
-    { MODKEY,			            XK_minus,  spawn,	       SHCMD("amixer -c 0 -- sset Master playback 1dB-;") },
+	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,				XK_o,      incnmaster,     {.i = -1 } },
+
+	{ MODKEY,			            XK_minus,  spawn,	       SHCMD("amixer -c 0 -- sset Master playback 1dB-;") },
     { MODKEY|ShiftMask,			    XK_minus,  spawn,	       SHCMD("amixer -c 0 -- sset Master playback 5dB-;") },
     { MODKEY,			            XK_equal,  spawn,	       SHCMD("amixer -c 0 -- sset Master playback 1dB+;") },
     { MODKEY|ShiftMask,			    XK_equal,  spawn,	       SHCMD("amixer -c 0 -- sset Master playback 5dB+;") },
-    { MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,						XK_m,      spawn,          SHCMD("amixer -c 0 -- sset Master playback mute") },
+	{ MODKEY|ShiftMask,				XK_m,      spawn,          SHCMD("amixer -c 0 -- sset Master playback unmute && amixer -c 0 -- sset Speaker playback unmute") },
+
+	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
@@ -147,6 +132,34 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+
+	{ 0,							XK_Print,  spawn,		   SHCMD("flameshot gui") },
+	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("scrot") },
+
+	{ MODKEY,						XK_z,      incrgaps,	   {.i = +3 } },
+	{ MODKEY,						XK_x,      incrgaps,       {.i = -3 } },
+	{ MODKEY,						XK_c,      defaultgaps,    {0} },
+	{ MODKEY|ShiftMask,             XK_c,      togglegaps,     {0} },
+	{ MODKEY,						XK_b,      togglebar,      {0} },
+    { MODKEY,						XK_n,      spawn,          SHCMD("$TERMINAL -e nvim $NOTES") },
+    { MODKEY,						XK_p,      spawn,          SHCMD("$TERMINAL -e nvim $PROJECTS") },
+
+	/*
+	{ MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } },
+	{ MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_l,      incrogaps,      {.i = -1 } },
+	{ MODKEY|Mod4Mask|ControlMask,  XK_h,      incrigaps,      {.i = +1 } },
+	{ MODKEY|Mod4Mask|ControlMask,  XK_l,      incrigaps,      {.i = -1 } },
+    { MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } },
+	{ MODKEY,                       XK_o,      incrihgaps,     {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_y,      incrivgaps,     {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_o,      incrivgaps,     {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_y,      incrohgaps,     {.i = +1 } },
+	{ MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } },
+	*/
 };
 
 /* button definitions */
