@@ -146,7 +146,14 @@ static Key keys[] = {
 
     { MODKEY,                       XK_s,      togglesticky,   {0} },
     { MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
-	/*
+
+    { MODKEY,                       XK_F1,     spawn,          SHCMD("telegram-desktop")},
+    { MODKEY,                       XK_F2,     spawn,          SHCMD("spotify")},
+    { MODKEY,                       XK_F3,     spawn,          SHCMD("discord")},
+    { MODKEY,                       XK_F4,     spawn,          SHCMD("xmind-2020")},
+
+
+    /*
 	{ MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } },
 	{ MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } },
